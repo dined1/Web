@@ -51,7 +51,7 @@ public class Customer implements Serializable {
 
     @Column(name = "ADDRESS1_AddressId", table = "customer")
     @ManyToOne(targetEntity = Address.class)
-    private Address address1 = new Address();
+    private Address address1;
 
     public Integer getCustomerId() {
         return this.customerId;
