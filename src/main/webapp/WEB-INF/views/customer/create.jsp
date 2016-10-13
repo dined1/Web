@@ -38,6 +38,15 @@
                                         <label for="phone">Phone</label>
                                         <input class="form-control" type="text" name="phone" path="phone"  />
                                     </div>
+                                    <div class="form-group">
+                                        <label for="address1">Address</label>
+                                        <select path="address1" name="address1" onchange=" ">
+                                            <option value="ord_null">Нет</option>
+                                            <c:forEach items="${ADDRESS_LIST}" var="ADDRESS">
+                                                <option value="${ADDRESS.addressId}">${ADDRESS.addressLine}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-check fa-fw"></i>Submit</button>
                                     <a href="${appPath}/customer/list" class="btn btn-default"><i class="fa fa-close fa-fw"></i>Cancel</a>
                                 </form>

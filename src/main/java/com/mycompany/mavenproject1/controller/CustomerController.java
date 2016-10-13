@@ -5,9 +5,11 @@
  */
 package com.mycompany.mavenproject1.controller;
 
+import com.mycompany.mavenproject1.Address;
 import com.mycompany.mavenproject1.Customer;
 import com.mycompany.mavenproject1.controller.util.ErrorBean;
 import com.mycompany.mavenproject1.controller.util.ValidationUtil;
+import com.mycompany.mavenproject1.service.facade.AddressFacade;
 import com.mycompany.mavenproject1.service.facade.CustomerFacade;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -31,6 +33,8 @@ public class CustomerController {
     @Inject
     private CustomerFacade facade;
     @Inject
+    private AddressFacade addressFacade;
+    @Inject
     private javax.mvc.binding.BindingResult validationResult;
     @Inject
     private ErrorBean error;
@@ -39,6 +43,7 @@ public class CustomerController {
     @Path("new")
     @javax.mvc.annotation.Controller
     public String emptyCustomer() {
+        model.put("ADDRESS_LIST", addressFacade.findAll());
         return "customer/create.jsp";
     }
 
@@ -47,11 +52,13 @@ public class CustomerController {
     @javax.mvc.annotation.Controller
     @ValidateOnExecution(type = ExecutableType.NONE)
     public String createCustomer(@Valid
-            @BeanParam Customer customer) {
+            @BeanParam Customer customer, @Valid
+    @BeanParam Address address) {
         if (validationResult.isFailed()) {
             return ValidationUtil.getResponse(validationResult, error);
         }
         facade.create(customer);
+        model.put("ADDRESS_LIST", addressFacade.findAll());
         return "redirect:customer/list";
     }
 

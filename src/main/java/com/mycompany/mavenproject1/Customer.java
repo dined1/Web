@@ -49,8 +49,9 @@ public class Customer implements Serializable {
     @FormParam("phone")
     private String phone;
 
+    @Column(name = "ADDRESS1_AddressId", table = "customer")
     @ManyToOne(targetEntity = Address.class)
-    private Address address1;
+    private Address address1 = new Address();
 
     public Integer getCustomerId() {
         return this.customerId;
