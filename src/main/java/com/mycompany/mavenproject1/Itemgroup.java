@@ -3,13 +3,9 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.ws.rs.FormParam;
+import java.io.Serializable;
 
 /**
  * @author dzni0816
@@ -24,7 +20,7 @@ public class Itemgroup implements Serializable {
     private Integer iGId;
 
     @ManyToOne(targetEntity = Group1.class)
-    private Group1 group11;
+    private Group1 groups1;
 
     @ManyToOne(targetEntity = Item.class)
     private Item item1;
@@ -37,12 +33,12 @@ public class Itemgroup implements Serializable {
         this.iGId = iGId;
     }
 
-    public Group1 getGroup11() {
-        return this.group11;
+    public Group1 getGroups1() {
+        return this.groups1;
     }
 
-    public void setGroup11(Group1 group11) {
-        this.group11 = group11;
+    public void setGroups1(Group1 groups1) {
+        this.groups1 = groups1;
     }
 
     public Item getItem1() {

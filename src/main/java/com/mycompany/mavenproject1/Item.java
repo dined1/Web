@@ -3,13 +3,10 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.ws.rs.FormParam;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author dzni0816
@@ -52,6 +49,15 @@ public class Item implements Serializable {
     @Basic
     @FormParam("modifiedDate")
     private String modifiedDate;
+
+    @OneToMany(targetEntity = ProductItems.class, mappedBy = "item1")
+    private List<ProductItems> productItemses1;
+
+    @OneToMany(targetEntity = Itemgroup.class, mappedBy = "item1")
+    private List<Itemgroup> itemgroups1;
+
+    @OneToMany(targetEntity = Itemdiscount.class, mappedBy = "item1")
+    private List<Itemdiscount> itemdiscounts1;
 
     public Integer getItemId() {
         return this.itemId;
@@ -107,6 +113,30 @@ public class Item implements Serializable {
 
     public void setModifiedDate(String modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public List<ProductItems> getProductItemses1() {
+        return this.productItemses1;
+    }
+
+    public void setProductItemses1(List<ProductItems> productItemses1) {
+        this.productItemses1 = productItemses1;
+    }
+
+    public List<Itemgroup> getItemgroups1() {
+        return this.itemgroups1;
+    }
+
+    public void setItemgroups1(List<Itemgroup> itemgroups1) {
+        this.itemgroups1 = itemgroups1;
+    }
+
+    public List<Itemdiscount> getItemdiscounts1() {
+        return this.itemdiscounts1;
+    }
+
+    public void setItemdiscounts1(List<Itemdiscount> itemdiscounts1) {
+        this.itemdiscounts1 = itemdiscounts1;
     }
 
 }

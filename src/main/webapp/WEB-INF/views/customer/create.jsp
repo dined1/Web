@@ -39,7 +39,7 @@
                                         <input class="form-control" type="text" name="phone" path="phone"  />
                                     </div>
                                     <div class="form-group">
-                                        <label for="address1">Address</label>
+                                        <label>Address</label>
                                         <select path="address1" name="address1" onchange=" ">
                                             <option value="ord_null">Нет</option>
                                             <c:forEach items="${ADDRESS_LIST}" var="ADDRESS">

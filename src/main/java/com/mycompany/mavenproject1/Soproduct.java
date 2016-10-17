@@ -3,14 +3,9 @@
  */
 package com.mycompany.mavenproject1;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.ws.rs.FormParam;
+import java.util.List;
 
 /**
  * @author dzni0816
@@ -21,21 +16,21 @@ public class Soproduct implements Serializable {
 
     @Column(name = "SOPId", table = "soproduct", nullable = false)
     @Id
-    @FormParam("sOPId")
     private Integer sOPId;
 
     @Column(name = "MP", table = "soproduct", precision = 12)
     @Basic
-    @FormParam("mp")
     private Float mp;
 
     @Column(name = "OTP", table = "soproduct", precision = 12)
     @Basic
-    @FormParam("otp")
     private Float otp;
 
     @ManyToOne(targetEntity = So.class)
     private So so1;
+
+    @OneToMany(targetEntity = ProductItems.class, mappedBy = "soproduct1")
+    private List<ProductItems> productItemses1;
 
     public Integer getSOPId() {
         return this.sOPId;
@@ -67,6 +62,14 @@ public class Soproduct implements Serializable {
 
     public void setSo1(So so1) {
         this.so1 = so1;
+    }
+
+    public List<ProductItems> getProductItemses1() {
+        return this.productItemses1;
+    }
+
+    public void setProductItemses1(List<ProductItems> productItemses1) {
+        this.productItemses1 = productItemses1;
     }
 
 }

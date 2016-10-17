@@ -4,11 +4,8 @@
 package com.mycompany.mavenproject1;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
 import javax.ws.rs.FormParam;
 
 /**
@@ -47,6 +44,9 @@ public class Address implements Serializable {
     @Basic
     @FormParam("modifiedDate")
     private String modifiedDate;
+
+    @OneToMany(targetEntity = Customer.class, mappedBy = "address1")
+    private List<Customer> customers1;
 
     public Integer getAddressId() {
         return this.addressId;
@@ -94,6 +94,14 @@ public class Address implements Serializable {
 
     public void setModifiedDate(String modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public List<Customer> getCustomers1() {
+        return this.customers1;
+    }
+
+    public void setCustomers1(List<Customer> customers1) {
+        this.customers1 = customers1;
     }
 
 }

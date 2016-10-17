@@ -3,9 +3,10 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import javax.ws.rs.FormParam;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author dzni0816
@@ -17,13 +18,15 @@ public class Role implements Serializable {
     @Column(name = "RoleId", table = "role", nullable = false)
     @Id
     @FormParam("roleId")
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer roleId;
 
     @Column(name = "Name", table = "role")
     @Basic
     @FormParam("name")
     private String name;
+
+    @OneToMany(targetEntity = UserRole.class, mappedBy = "role1")
+    private List<UserRole> userRoles1;
 
     public Integer getRoleId() {
         return this.roleId;
@@ -39,6 +42,14 @@ public class Role implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<UserRole> getUserRoles1() {
+        return this.userRoles1;
+    }
+
+    public void setUserRoles1(List<UserRole> userRoles1) {
+        this.userRoles1 = userRoles1;
     }
 
 }

@@ -3,13 +3,10 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.ws.rs.FormParam;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author dzni0816
@@ -33,6 +30,9 @@ public class Discountrule implements Serializable {
     @FormParam("discountProcent")
     private Float discountProcent;
 
+    @OneToMany(targetEntity = Itemdiscount.class, mappedBy = "discountrule1")
+    private List<Itemdiscount> itemdiscounts1;
+
     public Integer getDRId() {
         return this.dRId;
     }
@@ -55,6 +55,14 @@ public class Discountrule implements Serializable {
 
     public void setDiscountProcent(Float discountProcent) {
         this.discountProcent = discountProcent;
+    }
+
+    public List<Itemdiscount> getItemdiscounts1() {
+        return this.itemdiscounts1;
+    }
+
+    public void setItemdiscounts1(List<Itemdiscount> itemdiscounts1) {
+        this.itemdiscounts1 = itemdiscounts1;
     }
 
 }

@@ -3,13 +3,10 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.ws.rs.FormParam;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author dzni0816
@@ -28,6 +25,9 @@ public class Paymenttype implements Serializable {
     @FormParam("typeName")
     private String typeName;
 
+    @OneToMany(targetEntity = Payment.class, mappedBy = "paymenttype1")
+    private List<Payment> payments1;
+
     public Integer getPTId() {
         return this.pTId;
     }
@@ -42,6 +42,14 @@ public class Paymenttype implements Serializable {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public List<Payment> getPayments1() {
+        return this.payments1;
+    }
+
+    public void setPayments1(List<Payment> payments1) {
+        this.payments1 = payments1;
     }
 
 }

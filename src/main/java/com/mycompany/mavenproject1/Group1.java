@@ -4,11 +4,8 @@
 package com.mycompany.mavenproject1;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
 import javax.ws.rs.FormParam;
 
 /**
@@ -28,6 +25,9 @@ public class Group1 implements Serializable {
     @FormParam("name")
     private String name;
 
+    @OneToMany(targetEntity = Itemgroup.class, mappedBy = "groups1")
+    private List<Itemgroup> itemgroups1;
+
     public Integer getGroupId() {
         return this.groupId;
     }
@@ -42,6 +42,14 @@ public class Group1 implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Itemgroup> getItemgroups1() {
+        return this.itemgroups1;
+    }
+
+    public void setItemgroups1(List<Itemgroup> itemgroups1) {
+        this.itemgroups1 = itemgroups1;
     }
 
 }

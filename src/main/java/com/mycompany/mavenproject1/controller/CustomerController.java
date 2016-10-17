@@ -12,14 +12,12 @@ import com.mycompany.mavenproject1.controller.util.ValidationUtil;
 import com.mycompany.mavenproject1.service.facade.AddressFacade;
 import com.mycompany.mavenproject1.service.facade.CustomerFacade;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.executable.ExecutableType;
 import javax.validation.executable.ValidateOnExecution;
-import javax.ws.rs.BeanParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 
 /**
  *
@@ -52,13 +50,14 @@ public class CustomerController {
     @javax.mvc.annotation.Controller
     @ValidateOnExecution(type = ExecutableType.NONE)
     public String createCustomer(@Valid
-            @BeanParam Customer customer, @Valid
-    @BeanParam Address address) {
+            @BeanParam Customer customer, @FormParam("address1") String str) {
         if (validationResult.isFailed()) {
             return ValidationUtil.getResponse(validationResult, error);
         }
+        Address address = addressFacade.find(Integer.parseInt(str));
+        customer.setAddress1(address);
+        address.getCustomers1().add(customer);
         facade.create(customer);
-        model.put("ADDRESS_LIST", addressFacade.findAll());
         return "redirect:customer/list";
     }
 
@@ -67,6 +66,7 @@ public class CustomerController {
     @javax.mvc.annotation.Controller
     public String editCustomer(@PathParam("id") Integer id) {
         model.put("CUSTOMER", facade.find(id));
+        model.put("ADDRESS_LIST", addressFacade.findAll());
         return "customer/update.jsp";
     }
 

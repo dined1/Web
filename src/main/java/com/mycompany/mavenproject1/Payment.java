@@ -3,14 +3,9 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.ws.rs.FormParam;
+import java.io.Serializable;
 
 /**
  * @author dzni0816
@@ -32,11 +27,11 @@ public class Payment implements Serializable {
     @ManyToOne(targetEntity = Paymenttype.class)
     private Paymenttype paymenttype1;
 
-    @ManyToOne(targetEntity = Paymentbill.class)
-    private Paymentbill paymentbill1;
-
     @ManyToOne(targetEntity = So.class)
     private So so1;
+
+    @ManyToOne(targetEntity = Paymentbill.class)
+    private Paymentbill paymentbill1;
 
     public Integer getPaymentId() {
         return this.paymentId;
@@ -62,20 +57,20 @@ public class Payment implements Serializable {
         this.paymenttype1 = paymenttype1;
     }
 
-    public Paymentbill getPaymentbill1() {
-        return this.paymentbill1;
-    }
-
-    public void setPaymentbill1(Paymentbill paymentbill1) {
-        this.paymentbill1 = paymentbill1;
-    }
-
     public So getSo1() {
         return this.so1;
     }
 
     public void setSo1(So so1) {
         this.so1 = so1;
+    }
+
+    public Paymentbill getPaymentbill1() {
+        return this.paymentbill1;
+    }
+
+    public void setPaymentbill1(Paymentbill paymentbill1) {
+        this.paymentbill1 = paymentbill1;
     }
 
 }

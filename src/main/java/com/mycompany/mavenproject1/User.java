@@ -3,13 +3,10 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.ws.rs.FormParam;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author dzni0816
@@ -33,6 +30,12 @@ public class User implements Serializable {
     @FormParam("password")
     private String password;
 
+    @OneToMany(targetEntity = So.class, mappedBy = "user1")
+    private List<So> soes1;
+
+    @OneToMany(targetEntity = UserRole.class, mappedBy = "user1")
+    private List<UserRole> userRoles1;
+
     public Integer getUserId() {
         return this.userId;
     }
@@ -55,6 +58,22 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<So> getSoes1() {
+        return this.soes1;
+    }
+
+    public void setSoes1(List<So> soes1) {
+        this.soes1 = soes1;
+    }
+
+    public List<UserRole> getUserRoles1() {
+        return this.userRoles1;
+    }
+
+    public void setUserRoles1(List<UserRole> userRoles1) {
+        this.userRoles1 = userRoles1;
     }
 
 }
