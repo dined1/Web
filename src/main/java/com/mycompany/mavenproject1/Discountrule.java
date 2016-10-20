@@ -17,7 +17,7 @@ public class Discountrule implements Serializable {
 
     @Column(name = "DRId", table = "discountrule", nullable = false)
     @Id
-    @FormParam("dRId")
+    @FormParam("DRId")
     private Integer dRId;
 
     @Column(name = "DiscountValue", table = "discountrule", precision = 12)
