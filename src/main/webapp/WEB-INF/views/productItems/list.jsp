@@ -28,12 +28,15 @@
                             <table class="table table-striped table-bordered table-hover" id="PRODUCT_ITEMS_TABLE">
                                 <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${PRODUCT_ITEMS_LIST}" var="PRODUCT_ITEMS">
+                                    <c:forEach items="${PRODUCTITEMS_LIST}" var="PRODUCT_ITEMS">
                                         <tr>
+                                            <td>${mvc.encoders.html(PRODUCT_ITEMS.id)}</td>
+
                                             <td>
                                                 <div class="pull-right">
                                                     <div class="btn-group">

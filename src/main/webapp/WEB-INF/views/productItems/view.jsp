@@ -15,6 +15,12 @@
                             <div class="col-lg-12">
                                 <div class="list-group">
 
+                                    <a href="#" class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-lg-4"><span class="small">Id :</span></div>
+                                            <div class="col-lg-8">${mvc.encoders.html(PRODUCTITEMS.id)}</div>
+                                        </div>
+                                    </a>
 
                                 </div>
                                 <a href="${appPath}/productItems/list" class="btn btn-default"><i class="fa fa-arrow-circle-left fa-fw"></i>Back</a>

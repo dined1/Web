@@ -14,7 +14,10 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <form role="form" action="${appPath}/userRole/update" method="POST">
-                                    <input type="hidden" name="id" value="${USER_ROLE.id}" />
+                                    <div class="form-group">
+                                        <label for="id">id</label>
+                                        <input class="form-control" type="number" name="userId" readonly value="${USER.userId}" />
+                                    </div>
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-check fa-fw"></i>Update</button>
                                     <a href="${appPath}/userRole/list" class="btn btn-default"><i class="fa fa-close fa-fw"></i>Cancel</a>
                                 </form>

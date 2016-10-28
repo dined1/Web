@@ -30,7 +30,7 @@
                                     <a href="#" class="list-group-item">
                                         <div class="row">
                                             <div class="col-lg-4"><span class="small">Last Name :</span></div>
-                                            <div class="col-lg-8">${mvc.encoders.html(CUSTOMER.lastName)}</div>
+                                            <div class="col-lg-8">${mvc.encoders.html(CUSTOMER.firstName)}</div>
                                         </div>
                                     </a>
                                     <a href="#" class="list-group-item">

@@ -27,54 +27,56 @@
                         <div class="dataTable_wrapper">
                             <table class="table table-striped table-bordered table-hover" id="USER_ROLE_TABLE">
                                 <thead>
-                                    <tr>
-                                        <th></th>
-                                    </tr>
+                                <tr>
+                                    <th>Id</th>
+                                    <th></th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${USER_ROLE_LIST}" var="USER_ROLE">
-                                        <tr>
-                                            <td>
-                                                <div class="pull-right">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
-                                                            <i class="fa fa-gear"></i>  <span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu pull-right" role="menu">
-                                                            <li><a href="${USER_ROLE.id}"><i class="fa fa-level-up fa-fw"></i>  View</a></li>
-                                                            <li><a href="${appPath}/userRole/update/${USER_ROLE.id}"><i class="fa fa-edit fa-fw"></i>  Edit</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a data-toggle="modal" data-target="#confirm_delete_${USER_ROLE.id}" href="#"  ><i class="fa fa-trash-o fa-fw"></i> Delete</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                <c:forEach items="${USER_ROLE_LIST}" var="USER_ROLE">
+                                    <tr>
+                                        <td>${mvc.encoders.html(USER_ROLE.id)}</td>
+                                        <td>
+                                            <div class="pull-right">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-gear"></i>  <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu pull-right" role="menu">
+                                                        <li><a href="${USER_ROLE.id}"><i class="fa fa-level-up fa-fw"></i>  View</a></li>
+                                                        <li><a href="${appPath}/userRole/update/${USER_ROLE.id}"><i class="fa fa-edit fa-fw"></i>  Edit</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a data-toggle="modal" data-target="#confirm_delete_${USER_ROLE.id}" href="#"  ><i class="fa fa-trash-o fa-fw"></i> Delete</a>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="confirm_delete_${USER_ROLE.id}" tabindex="-1" role="dialog" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title">Confirmation</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Are you sure to delete User Role ?</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <form action="${appPath}/userRole/remove/${USER_ROLE.id}" method="DELETE">
-                                                                    <a href="#" class="btn" data-dismiss="modal">Cancel</a> <button type="submit" class="btn btn-primary">Confirm</button>
-                                                                </form>
-                                                            </div>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="confirm_delete_${USER_ROLE.id}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <h4 class="modal-title">Confirmation</h4>
                                                         </div>
-                                                        <!-- /.modal-content -->
+                                                        <div class="modal-body">
+                                                            <p>Are you sure to delete User Role ?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form action="${appPath}/userRole/remove/${USER_ROLE.id}" method="DELETE">
+                                                                <a href="#" class="btn" data-dismiss="modal">Cancel</a> <button type="submit" class="btn btn-primary">Confirm</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
-                                                    <!-- /.modal-dialog -->
+                                                    <!-- /.modal-content -->
                                                 </div>
-                                                <!-- /.modal -->
-                                            </td>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                            <!-- /.modal -->
+                                        </td>
 
-                                        </tr>
-                                    </c:forEach>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

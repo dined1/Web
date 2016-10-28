@@ -96,7 +96,7 @@ public class UserRoleController {
     @Path("list")
     @javax.mvc.annotation.Controller
     public String findAllUserRole() {
-        model.put("USERROLE_LIST", facade.findAll());
+        model.put("USER_ROLE_LIST", facade.findAll());
         return "userRole/list.jsp";
     }
     
